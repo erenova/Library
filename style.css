@@ -112,8 +112,19 @@ body {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   line-break: anywhere;
-
+  overflow-y: auto;
   background-color: var(--reddish);
+}
+.book::-webkit-scrollbar {
+  width: 2px; /* Webkit tarayıcılar için scrollbar genişliği (örneğin Chrome, Safari) */
+}
+
+.book::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 170, 0.4); /* Scrollbar rengi */
+}
+
+.book::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Mouse üzerindeyken scrollbar rengi */
 }
 
 .book-author {
@@ -126,17 +137,24 @@ body {
 }
 
 .book-name {
+  text-align: center;
   grid-column: 1/-1;
   display: flex;
   justify-content: center;
   font-family: "ralewayr";
 }
 
-.book-read {
+.book-read-state {
   grid-area: 3/2/4/4;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.book-read {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .book-delete-button {
@@ -144,16 +162,12 @@ body {
   align-items: center;
   justify-content: center;
   margin: 5px;
-  grid-column: 3/5;
-  grid-row: 4/5;
 }
 .book-edit-button {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 5px;
-  grid-column: 1/3;
-  grid-row: 4/5;
 }
 .book-button > button {
   background: none;
@@ -164,10 +178,18 @@ body {
 .book-button > * > svg {
   height: 35px;
 }
+
+.book-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column: 1/5;
+  grid-row: 4/5;
+}
 /* Sidebar Styling Section */
 .sidebar {
   background-color: var(--tan);
-  width: 22vw;
+  width: 25%;
   height: 100%;
   position: absolute;
   top: 0;
@@ -203,7 +225,7 @@ body {
 
 @media (max-width: 1024px) {
   .sidebar {
-    width: 45%;
+    width: 35%;
   }
   .content-books {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
