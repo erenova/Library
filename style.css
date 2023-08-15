@@ -23,7 +23,7 @@ body {
   fill: var(--svg-color);
 }
 .hamburger-svg.black {
-  fill: #565656;
+  fill: var(--dark);
   width: 35px;
 }
 /*! Main styling  */
@@ -83,9 +83,9 @@ body {
 }
 
 .content-books {
+  height: 100%;
   border: 1px solid rgba(0, 0, 0, 0.3);
   padding: 1rem;
-  overflow-x: none;
   overflow-y: auto;
   display: grid;
   width: 75%;
@@ -107,7 +107,62 @@ body {
 }
 
 .book {
+  display: grid;
+  padding: 1rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  line-break: anywhere;
+
   background-color: var(--reddish);
+}
+
+.book-author {
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  font-style: italic;
+}
+
+.book-name {
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: center;
+  font-family: "ralewayr";
+}
+
+.book-read {
+  grid-area: 3/2/4/4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.book-delete-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  grid-column: 3/5;
+  grid-row: 4/5;
+}
+.book-edit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  grid-column: 1/3;
+  grid-row: 4/5;
+}
+.book-button > button {
+  background: none;
+  outline: none;
+  border: none;
+}
+
+.book-button > * > svg {
+  height: 35px;
 }
 /* Sidebar Styling Section */
 .sidebar {
@@ -149,6 +204,9 @@ body {
 @media (max-width: 1024px) {
   .sidebar {
     width: 45%;
+  }
+  .content-books {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
 }
 
