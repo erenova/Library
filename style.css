@@ -1,0 +1,63 @@
+/* Tech styling area */
+
+:root {
+  --background: rgba(215, 206, 199, 0.6);
+  --dark: #565656;
+  --reddish: #76323f;
+  --tan: #c09f80;
+}
+@font-face {
+  font-family: "ralewayr";
+  src: url("fonts/ralewayr.woff2") format("woff2"),
+    url("fonts/ralewayr.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  max-height: 100vh;
+  background-color: var(--background);
+}
+.hamburger-svg {
+  width: 50px;
+  fill: #d7cec7;
+}
+/*! Main styling  */
+
+.topbar {
+  min-width: 100vw;
+  max-height: 5rem;
+  box-sizing: border-box;
+  padding: 0 3rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  background-color: #565656;
+}
+.topbar-holder {
+  display: flex;
+  align-items: center;
+  width: 30%;
+  justify-content: space-between;
+}
+.header {
+  box-sizing: border-box;
+  padding: 1rem;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: "ralewayr";
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff,
+    0 0 15px rgba(0, 255, 170, 0.5), 0 0 20px #0fa, 0 0 15px #0fa, 0 0 20px #0fa,
+    0 0 30px #0fa;
+}
+
+.theme-switch {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .topbar {
+    padding: 0 1rem;
+  }
+}
