@@ -4,7 +4,7 @@
   --background: rgba(215, 206, 199, 0.6);
   --svg-color: #d7cec7;
   --dark: #565656;
-  --reddish: #76323f;
+  --reddish: rgba(118, 50, 63, 0.75);
   --tan: #d8d0c9;
 }
 @font-face {
@@ -63,6 +63,52 @@ body {
   width: 100%;
 }
 
+/* Content Styling section */
+
+.content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow: none;
+
+  height: 75vh;
+}
+
+.content-header {
+  text-align: center;
+  padding: 1rem;
+  font-size: 2rem;
+  font-family: "ralewayr";
+  text-decoration: underline;
+}
+
+.content-books {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  overflow-x: none;
+  overflow-y: auto;
+  display: grid;
+  width: 75%;
+  gap: 5rem;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: 300px;
+}
+.content-books::-webkit-scrollbar {
+  width: 5px; /* Webkit tarayıcılar için scrollbar genişliği (örneğin Chrome, Safari) */
+}
+
+.content-books::-webkit-scrollbar-thumb {
+  background: #888; /* Scrollbar rengi */
+}
+
+.content-books::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Mouse üzerindeyken scrollbar rengi */
+}
+
+.book {
+  background-color: var(--reddish);
+}
 /* Sidebar Styling Section */
 .sidebar {
   background-color: var(--tan);
@@ -118,7 +164,18 @@ body {
     transform: translate(0, -100%);
   }
   .close-sidebar {
-    left: 2%;
-    top: 2%;
+    left: 5%;
+    top: 5%;
+  }
+}
+
+@media (max-width: 650px) {
+  .content-books {
+    grid-template-columns: 250px;
+  }
+}
+@media (max-width: 350px) {
+  .content-books {
+    grid-template-columns: 1fr;
   }
 }
