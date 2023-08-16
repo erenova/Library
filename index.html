@@ -23,7 +23,7 @@
                 <div class="header" id="header">LibrApp</div>
 
             </div>
-            <div class="theme-switch" id="switch">On-Off</div>
+            <div class="theme-switch" id="switch"></div>
 
         </div>
         <div id="content" class="content">
@@ -79,7 +79,7 @@
                             </fieldset>
                         </div>
 
-                        <div class="add-book-button"><button type="button" id="NewBookButton">Add New Book</button>
+                        <div class="add-book-button"><button type="submit" id="NewBookButton">Add New Book</button>
                         </div>
                     </form>
                 </div>
@@ -94,7 +94,20 @@
 
         </div>
         <div id="backdrop" class="backdrop deactive" data-state="deactive"></div>
-        <div class="modal" id="modal" data-state="deactive" data-modal-index="null"></div>
+        <div class="modal" id="modal" data-state="deactive" data-modal-index="null">
+            <form id="modalForm">
+                <fieldset>
+                    <legend>Edit the Book</legend>
+                    <label for="authorTwo">Author:</label> <input type="text" name="authorTwo" id="authorTwo">
+                    <label for="bookNameTwo">Name:</label> <input type="text" name="bookNameTwo" id="bookNameTwo">
+                    <label for="pageNumberTwo">Number of pages:</label> <input type="number" name="pageNumberTwo"
+                        id="pageNumberTwo">
+                    <div class="edit-button-holder"><button id="editBookButton" data-edit-book-index="">Change
+                            it!</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
     </div>
 </body>
 

@@ -324,6 +324,39 @@ input:placeholder-shown:active + .tooltip {
 .backdrop[data-state="deactive"] {
   transform: scale(0);
 }
+
+/*! Modal Styling */
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  height: 23rem;
+  width: 20rem;
+  background-color: #555;
+  transition: all 300ms ease;
+}
+
+.modal[data-state="deactive"] {
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+}
+#modalForm {
+  padding-top: 2rem;
+}
+
+.edit-button-holder {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.edit-button-holder > button {
+  padding: 1rem;
+}
+
 /* Media Query Section */
 
 @media (max-width: 1024px) {
