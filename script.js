@@ -1,4 +1,4 @@
-const bookLibrary = [];
+let bookLibrary = fetchFromLocal() || [];
 
 function Book(author, name, totalPage, state = false) {
   this.author = author;
@@ -12,10 +12,29 @@ function pushNewBook(valAuthor, valName, valPage, valState = false) {
   domFunctions.renderDom();
 }
 
-function addNewBook() {}
+function saveToLocalStorage() {
+  localStorage.setItem("library", JSON.stringify(bookLibrary));
+}
 
-const currentSession = {};
-const userSettings = {};
+function fetchFromLocal() {
+  if (localStorage.getItem("library") === null) {
+    let newArr = [];
+    newArr.push({
+      author: "Leo Tolstoy",
+      name: "War and Peace",
+      totalPage: "1225",
+      state: false,
+    });
+    return newArr;
+  } else {
+    return JSON.parse(localStorage.getItem("library"));
+  }
+}
+
+const userSettings = {
+  activeDelete: null,
+  activeEdit: null,
+};
 
 const domSelectors = {
   topbar: "#topbar",
@@ -94,14 +113,13 @@ const domFunctions = {
       domItemsAll.buttonEdit = document.querySelectorAll(
         '[data-button="edit"]'
       );
-      domItemsAll.buttonRead.forEach((elem) => {
-        elem.addEventListener("click", () => {
-          let readIndex = elem.dataset.readIndex;
-          domFunctions.changeReadState(readIndex);
-          domFunctions.renderDom();
-        });
+      domItemsAll.buttonDelete.forEach((buttonItem) => {
+        buttonItem.addEventListener("click", this.handleDeleteButton);
       });
-
+      domItemsAll.buttonRead.forEach((buttonItem) => {
+        buttonItem.addEventListener("click", this.handleReadButton);
+      });
+      saveToLocalStorage();
       itemIndex++;
     });
   },
@@ -111,8 +129,8 @@ const domFunctions = {
     }
   },
   bookScroll() {
-    var element = domItem.contentBooks;
-    var to = element.scrollHeight;
+    let element = domItem.contentBooks;
+    let to = element.scrollHeight;
 
     element.scroll({
       top: to,
@@ -140,6 +158,17 @@ const domFunctions = {
     domFunctions.renderDom();
   },
   editBook(indexNumber) {},
+  handleReadButton(event) {
+    let readIndex = event.target.parentNode.dataset.readIndex;
+    domFunctions.changeReadState(readIndex);
+  },
+  handleDeleteButton(event) {
+    let readIndex = event.target.parentNode.dataset.deleteIndex;
+    if (readIndex === "0" && bookLibrary.length === 1) {
+      localStorage.clear();
+    }
+    domFunctions.deleteBook(readIndex);
+  },
 };
 
 domItem.backdrop.addEventListener("click", () => {
@@ -179,4 +208,4 @@ domItem.newBookButton.addEventListener("click", () => {
   domFunctions.bookScroll();
 });
 
-pushNewBook("eren", "eren", 33, true);
+domFunctions.renderDom();
