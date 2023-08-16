@@ -29,7 +29,7 @@
         <div id="content" class="content">
 
             <div class="content-header">Books</div>
-            <div class="content-books">
+            <div class="content-books" id="contentBooks">
                 <div class="book" data-book-index="0">
                     <div class="book-author">Hubert Blaine Wolfeschlegelsteinhausenbergerdorff Sr.</div>
                     <div class="book-name">Learn Web Development Instantly!</div>
@@ -61,7 +61,7 @@
                 <div class="book" data-book-index="1">
                     <div class="book-author">Hubert Blaine Wolfeschlegelsteinhausenbergerdorff Sr.</div>
                     <div class="book-name">Learn Web Development Instantly!</div>
-                    <div class="book-read-state">Read</div>
+                    <div class="book-read-state">Unread</div>
                     <div class="book-page-number">1702</div>
                     <div class="book-buttons">
                         <div class="book-read book-button" data-button="read" data-read-state="true">
@@ -92,7 +92,43 @@
 
         <!-- Backdrop and sidebar -->
         <div id="sidebar" class="sidebar" data-state="active">
-            <div class="sidebar-items">Hello</div>
+            <div class="sidebar-items">
+                <div class="new-book-form" id="bookForm">
+                    <form>
+                        <div class="fieldset-area">
+                            <fieldset>
+                                <legend>Create New Book</legend>
+                                <label for="bookName">
+                                    Book Name: <input type="text" id="bookName">
+                                </label>
+                                <label for="author">
+                                    Author: <input type="text" id="author">
+                                </label>
+                                <label for="pageNumber">
+                                    Number of pages: <input type="number" id="pageNumber">
+                                </label>
+                            </fieldset>
+                            <fieldset class="second-fieldset">
+                                <legend>Did you read The Book?</legend>
+                                <div class="already">
+                                    <label for="alreadyRead">
+                                        Yes
+                                    </label>
+                                    <input type="radio" value="read" id="alreadyRead" name="readCheck">
+                                </div>
+                                <div class="not-yet">
+                                    <label for="notReadYet">
+                                        Not yet
+                                    </label>
+                                    <input type="radio" value="unread" id="notReadYet" name="readCheck" checked>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="add-book-button"><button type="button">Add New Book</button></div>
+                    </form>
+                </div>
+            </div>
 
 
             <div class="close-sidebar" id="sidebarClose"><svg class="hamburger-svg black"
