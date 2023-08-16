@@ -117,6 +117,7 @@ svg {
   line-break: anywhere;
   overflow-y: auto;
   background-color: var(--reddish);
+  transition: 300ms all ease;
 }
 .book::-webkit-scrollbar {
   width: 2px; /* Webkit tarayıcılar için scrollbar genişliği (örneğin Chrome, Safari) */
@@ -355,6 +356,12 @@ input:placeholder-shown:active + .tooltip {
 }
 .edit-button-holder > button {
   padding: 1rem;
+}
+
+/* Animation styling */
+
+.book.deleting {
+  opacity: 0;
 }
 
 /* Media Query Section */

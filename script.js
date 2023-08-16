@@ -173,7 +173,13 @@ const domFunctions = {
   },
   deleteBook(indexNumber) {
     bookLibrary.splice(indexNumber, 1);
-    domFunctions.renderDom();
+    let animating = document.querySelector(
+      `[data-book-index="${indexNumber}"]`
+    );
+    animating.classList.add("deleting");
+    setTimeout(() => {
+      domFunctions.renderDom();
+    }, 300);
   },
   editBook(indexNumber) {
     domItem.modal.dataset.editIndex = indexNumber;
