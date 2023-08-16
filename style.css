@@ -26,6 +26,9 @@ body {
   fill: var(--dark);
   width: 35px;
 }
+svg {
+  pointer-events: none;
+}
 /*! Main styling  */
 
 /*? topbar Styling */
