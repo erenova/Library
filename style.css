@@ -145,10 +145,17 @@ body {
 }
 
 .book-read-state {
-  grid-area: 3/2/4/4;
+  grid-area: 3/1/4/3;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.book-page-number {
+  grid-area: 3/3/4/5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .book-read {
@@ -228,7 +235,7 @@ body {
     width: 35%;
   }
   .content-books {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
   }
 }
 
@@ -252,6 +259,8 @@ body {
 @media (max-width: 650px) {
   .content-books {
     grid-template-columns: 250px;
+
+    gap: 1.5rem;
   }
 }
 @media (max-width: 350px) {
