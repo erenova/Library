@@ -195,6 +195,7 @@ body {
 }
 /* Sidebar Styling Section */
 .sidebar {
+  display: none;
   background-color: var(--tan);
   width: 25%;
   height: 100%;
@@ -219,6 +220,7 @@ body {
 .sidebar-items {
   padding-top: 3rem;
   display: flex;
+  justify-content: center;
 }
 .new-book-form {
   display: flex;
@@ -270,6 +272,41 @@ input {
   transform: rotate(-2deg) scale(1.1);
 }
 
+/* Tooltip Styling */
+.tooltip {
+  position: absolute;
+  transform: translateY(25%);
+  background-color: #000;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  white-space: nowrap;
+  display: none;
+  z-index: 10;
+  pointer-events: none;
+}
+.tooltip::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  transform: translateX(-0%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #000;
+}
+
+label {
+  position: relative;
+  display: block;
+}
+
+input:placeholder-shown:hover + .tooltip,
+input:placeholder-shown:focus + .tooltip,
+input:placeholder-shown:active + .tooltip {
+  display: inline-block;
+}
 /* backdrop styling section */
 .backdrop {
   position: absolute;
