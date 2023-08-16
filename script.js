@@ -7,8 +7,8 @@ function Book(name, author, totalPage, state = false) {
   this.state = state;
 }
 
-function addBookToLibrary(bookObject) {
-  return new Book(bookObject);
+function addNewBook(valName, valAuthor, valPage, valState = false) {
+  bookLibrary.push(new Book(valName, valAuthor, valPage, valState));
 }
 
 const currentSession = {};
@@ -17,6 +17,7 @@ const userSettings = {};
 const domItem = {
   topbar: document.querySelector("#topbar"),
   sidebar: document.querySelector("#sidebar"),
+  contentBooks: document.querySelector("#contentBooks"),
   backdrop: document.querySelector("#backdrop"),
   menuButton: document.querySelector("#menuButton"),
   sidebarClose: document.querySelector("#sidebarClose"),
@@ -39,15 +40,30 @@ const domFunctions = {
       item.dataset.state = "active";
     });
   },
+  renderDom() {
+    let itemIndex = 0;
+    bookLibrary.forEach((bookItem) => {
+      bookItem;
+    });
+  },
 };
 
 domItem.backdrop.addEventListener("click", () => {
   domFunctions.deactiveAll();
 });
 domItem.menuButton.addEventListener("click", () => {
-  domFunctions.switchState(domItem.backdrop);
-  domFunctions.switchState(domItem.sidebar);
+  domItem.sidebar.style.display = "block";
+  requestAnimationFrame(() => {
+    domFunctions.switchState(domItem.backdrop);
+    domFunctions.switchState(domItem.sidebar);
+  });
 });
 domItem.sidebarClose.addEventListener("click", () => {
   domFunctions.deactiveAll();
+});
+
+domItem.sidebar.addEventListener("transitionend", () => {
+  if (domItem.sidebar.dataset.state === "deactive") {
+    domItem.sidebar.style.display = "none";
+  }
 });
