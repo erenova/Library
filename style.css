@@ -402,4 +402,7 @@ input:placeholder-shown:active + .tooltip {
   .content-books {
     grid-template-columns: 1fr;
   }
+  .modal {
+    width: 100%;
+  }
 }
