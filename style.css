@@ -213,7 +213,63 @@ body {
   position: absolute;
   right: 2%;
   top: 2%;
+  width: 35px;
 }
+
+.sidebar-items {
+  padding-top: 3rem;
+  display: flex;
+}
+.new-book-form {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+form {
+  width: 100%;
+}
+.fieldset-area {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  width: 100%;
+}
+.second-fieldset {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+.not-yet,
+.already {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  flex-direction: column;
+}
+.add-book-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.add-book-button > button {
+  margin-top: 1rem;
+  outline: none;
+  border: none;
+  background: none;
+  background-color: rgba(0, 255, 170, 0.4);
+  font-family: "ralewayr";
+  border-radius: 0.5;
+  transition: all 100ms ease;
+}
+.add-book-button > button:hover {
+  background-color: rgba(0, 255, 170);
+  transform: rotate(-2deg) scale(1.1);
+}
+
 /* backdrop styling section */
 .backdrop {
   position: absolute;
@@ -240,12 +296,18 @@ body {
 }
 
 @media (max-width: 768px) {
+  .sidebar {
+    border-radius: 0 0 5rem 5rem;
+  }
+  .sidebar-items {
+    padding-top: 3.5rem;
+  }
   .topbar {
     padding: 0 1rem;
   }
   .sidebar {
     width: 100%;
-    height: 50%;
+    height: 55%;
   }
   .sidebar[data-state="deactive"] {
     transform: translate(0, -100%);
