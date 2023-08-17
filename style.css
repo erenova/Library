@@ -288,6 +288,7 @@ input {
   display: none;
   z-index: 10;
   pointer-events: none;
+  transition: 100ms ease all;
 }
 .tooltip::before {
   content: "";
@@ -300,8 +301,15 @@ input {
   border-right: 8px solid transparent;
   border-bottom: 8px solid #000;
 }
-.tooltip.active {
+
+[data-invalid] {
+  transition: 100ms ease all;
+  scale: 0;
+  display: block;
+}
+[data-invalid].active {
   display: inline-block;
+  scale: 1;
 }
 
 label {

@@ -207,9 +207,19 @@ const domFunctions = {
   },
   preventBadData(event) {
     if (event.key === "." || event.key === "-") {
+      domFunctions.badDataAnimation();
       event.preventDefault();
       return;
     }
+  },
+  badDataAnimation() {
+    domItem.dataInvalid.style.display = "block";
+    setTimeout(() => {
+      domItem.dataInvalid.classList.add("active");
+    }, 100);
+    setTimeout(() => {
+      domItem.dataInvalid.classList.remove("active");
+    }, 500);
   },
 };
 
@@ -276,9 +286,5 @@ domItem.editBookButton.addEventListener("click", (e) => {
 });
 
 domItem.pageNumberInp.addEventListener("keypress", domFunctions.preventBadData);
-domItem.editPageNumber.addEventListener(
-  "keypress",
-  domFunctions.preventBadData
-);
 
 domFunctions.renderDom();
