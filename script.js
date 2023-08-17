@@ -55,6 +55,7 @@ const domSelectors = {
   editPageNumber: "#pageNumberTwo",
   editBookButton: "#editBookButton",
   dataInvalid: "[data-invalid]",
+  plusButton: "#plusButton",
 };
 
 const domItem = {};
@@ -236,53 +237,56 @@ const domFunctions = {
       domItem.dataInvalid.classList.remove("active");
     }, 500);
   },
+  redirectMenu() {
+    domItem.sidebar.style.display = "block";
+    requestAnimationFrame(() => {
+      domFunctions.switchState(domItem.backdrop);
+      domFunctions.switchState(domItem.sidebar);
+    });
+  },
+  newBookFunc(event) {
+    event.preventDefault();
+    const firstEmptyInput = domItemsAll.inputElements.find(
+      (input) => input.value === ""
+    );
+    if (firstEmptyInput) {
+      firstEmptyInput.focus();
+      return;
+    }
+    if (domItem.pageNumberInp.value.startsWith(".")) {
+      domItem.dataInvalid.classList.add("active");
+      domItem.pageNumberInp.focus();
+      return;
+    }
+    if (domItem.pageNumberInp.value.includes(".")) {
+    }
+
+    let isRead = domItem.alreadyReadInp.checked === true ? true : false;
+    pushNewBook(
+      domItem.bookNameInp.value,
+      domItem.authorInp.value,
+      domItem.pageNumberInp.value,
+      isRead
+    );
+    domFunctions.clearInputs();
+    domFunctions.deactiveAll();
+    domFunctions.bookScroll();
+    domItem.dataInvalid.classList.remove("active");
+  },
 };
 
 domItem.backdrop.addEventListener("click", () => {
   domFunctions.deactiveAll();
 });
-domItem.menuButton.addEventListener("click", () => {
-  domItem.sidebar.style.display = "block";
-  requestAnimationFrame(() => {
-    domFunctions.switchState(domItem.backdrop);
-    domFunctions.switchState(domItem.sidebar);
-  });
-});
+domItem.menuButton.addEventListener("click", domFunctions.redirectMenu);
+domItem.plusButton.addEventListener("click", domFunctions.redirectMenu);
 domItem.sidebarClose.addEventListener("click", () => {
   domFunctions.deactiveAll();
 });
 
 domItem.sidebar.addEventListener("transitionend", domFunctions.handleSidebar);
 
-domItem.newBookButton.addEventListener("click", (e) => {
-  e.preventDefault();
-  const firstEmptyInput = domItemsAll.inputElements.find(
-    (input) => input.value === ""
-  );
-  if (firstEmptyInput) {
-    firstEmptyInput.focus();
-    return;
-  }
-  if (domItem.pageNumberInp.value.startsWith(".")) {
-    domItem.dataInvalid.classList.add("active");
-    domItem.pageNumberInp.focus();
-    return;
-  }
-  if (domItem.pageNumberInp.value.includes(".")) {
-  }
-
-  let isRead = domItem.alreadyReadInp.checked === true ? true : false;
-  pushNewBook(
-    domItem.bookNameInp.value,
-    domItem.authorInp.value,
-    domItem.pageNumberInp.value,
-    isRead
-  );
-  domFunctions.clearInputs();
-  domFunctions.deactiveAll();
-  domFunctions.bookScroll();
-  domItem.dataInvalid.classList.remove("active");
-});
+domItem.newBookButton.addEventListener("click", domFunctions.newBookFunc);
 
 domItem.editBookButton.addEventListener("click", domFunctions.editBookListener);
 
