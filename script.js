@@ -207,7 +207,7 @@ const domFunctions = {
   },
   preventBadData(event) {
     if (event.key === "." || event.key === "-") {
-      domFunctions.badDataAnimation();
+      if (domItem.pageNumberInp.value !== "") domFunctions.badDataAnimation();
       event.preventDefault();
       return;
     }
