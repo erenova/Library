@@ -300,6 +300,9 @@ input {
   border-right: 8px solid transparent;
   border-bottom: 8px solid #000;
 }
+.tooltip.active {
+  display: inline-block;
+}
 
 label {
   position: relative;
