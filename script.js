@@ -54,6 +54,7 @@ const domSelectors = {
   editAuthor: "#authorTwo",
   editPageNumber: "#pageNumberTwo",
   editBookButton: "#editBookButton",
+  dataInvalid: "[data-invalid]",
 };
 
 const domItem = {};
@@ -204,6 +205,12 @@ const domFunctions = {
     let readIndex = event.target.parentNode.dataset.editIndex;
     domFunctions.editBook(readIndex);
   },
+  preventBadData(event) {
+    if (event.key === "." || event.key === "-") {
+      event.preventDefault();
+      return;
+    }
+  },
 };
 
 domItem.backdrop.addEventListener("click", () => {
@@ -231,6 +238,13 @@ domItem.newBookButton.addEventListener("click", (e) => {
     firstEmptyInput.focus();
     return;
   }
+  if (domItem.pageNumberInp.value.startsWith(".")) {
+    domItem.dataInvalid.classList.add("active");
+    domItem.pageNumberInp.focus();
+    return;
+  }
+  if (domItem.pageNumberInp.value.includes(".")) {
+  }
 
   let isRead = domItem.alreadyReadInp.checked === true ? true : false;
   pushNewBook(
@@ -242,6 +256,7 @@ domItem.newBookButton.addEventListener("click", (e) => {
   domFunctions.clearInputs();
   domFunctions.deactiveAll();
   domFunctions.bookScroll();
+  domItem.dataInvalid.classList.remove("active");
 });
 
 domItem.editBookButton.addEventListener("click", (e) => {
@@ -259,5 +274,11 @@ domItem.editBookButton.addEventListener("click", (e) => {
     domFunctions.renderDom();
   }
 });
+
+domItem.pageNumberInp.addEventListener("keypress", domFunctions.preventBadData);
+domItem.editPageNumber.addEventListener(
+  "keypress",
+  domFunctions.preventBadData
+);
 
 domFunctions.renderDom();
