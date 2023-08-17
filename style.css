@@ -29,6 +29,10 @@ body {
 svg {
   pointer-events: none;
 }
+
+.button {
+  cursor: pointer;
+}
 /*! Main styling  */
 
 /*? topbar Styling */
@@ -375,6 +379,19 @@ input:placeholder-shown:active + .tooltip {
   opacity: 0;
 }
 
+/* Plus button Styling */
+
+.plus-button > svg {
+  height: 100px;
+  fill: green;
+}
+.plus-button {
+  cursor: pointer;
+  position: absolute;
+  bottom: 3%;
+  right: 2%;
+}
+
 /* Media Query Section */
 
 @media (max-width: 1024px) {
@@ -387,6 +404,13 @@ input:placeholder-shown:active + .tooltip {
 }
 
 @media (max-width: 768px) {
+  .plus-button > svg {
+    height: 75px;
+  }
+  .plus-button {
+    bottom: 2%;
+    right: 1%;
+  }
   .sidebar {
     border-radius: 0 0 5rem 5rem;
   }
@@ -410,6 +434,10 @@ input:placeholder-shown:active + .tooltip {
 }
 
 @media (max-width: 650px) {
+  .plus-button > svg {
+    height: 50px;
+  }
+
   .content-books {
     grid-template-columns: 250px;
 
