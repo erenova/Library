@@ -30,9 +30,6 @@ svg {
   pointer-events: none;
 }
 
-.button {
-  cursor: pointer;
-}
 button {
   cursor: pointer;
 }
