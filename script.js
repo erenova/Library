@@ -190,6 +190,21 @@ const domFunctions = {
     domItem.editBookName.value = bookLibrary[indexNumber].name;
     domItem.editPageNumber.value = bookLibrary[indexNumber].totalPage;
   },
+  editBookListener(event) {
+    event.preventDefault();
+    let activeIndex = domItem.editBookButton.dataset.editBookIndex;
+    if (
+      domItem.editBookName.value !== "" &&
+      domItem.editAuthor.value !== "" &&
+      domItem.editPageNumber !== ""
+    ) {
+      bookLibrary[activeIndex].author = `${domItem.editAuthor.value}`;
+      bookLibrary[activeIndex].name = `${domItem.editBookName.value}`;
+      bookLibrary[activeIndex].totalPage = `${domItem.editPageNumber.value}`;
+      domFunctions.deactiveAll();
+      domFunctions.renderDom();
+    }
+  },
   handleReadButton(event) {
     let readIndex = event.target.parentNode.dataset.readIndex;
     domFunctions.changeReadState(readIndex);
@@ -269,22 +284,12 @@ domItem.newBookButton.addEventListener("click", (e) => {
   domItem.dataInvalid.classList.remove("active");
 });
 
-domItem.editBookButton.addEventListener("click", (e) => {
-  e.preventDefault();
-  let activeIndex = domItem.editBookButton.dataset.editBookIndex;
-  if (
-    domItem.editBookName.value !== "" &&
-    domItem.editAuthor.value !== "" &&
-    domItem.editPageNumber !== ""
-  ) {
-    bookLibrary[activeIndex].author = `${domItem.editAuthor.value}`;
-    bookLibrary[activeIndex].name = `${domItem.editBookName.value}`;
-    bookLibrary[activeIndex].totalPage = `${domItem.editPageNumber.value}`;
-    domFunctions.deactiveAll();
-    domFunctions.renderDom();
-  }
-});
+domItem.editBookButton.addEventListener("click", domFunctions.editBookListener);
 
 domItem.pageNumberInp.addEventListener("keypress", domFunctions.preventBadData);
+domItem.editPageNumber.addEventListener(
+  "keypress",
+  domFunctions.preventBadData
+);
 
 domFunctions.renderDom();
