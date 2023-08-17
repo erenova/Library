@@ -33,6 +33,10 @@ svg {
 .button {
   cursor: pointer;
 }
+button {
+  cursor: pointer;
+}
+
 /*! Main styling  */
 
 /*? topbar Styling */
