@@ -195,9 +195,31 @@ const domFunctions = {
     event.preventDefault();
     let activeIndex = domItem.editBookButton.dataset.editBookIndex;
     if (
+      domItem.editPageNumber.value.startsWith("0") ||
+      domItem.editPageNumber.value.includes(".") ||
+      domItem.editPageNumber.value.includes("-")
+    ) {
+      domItem.editPageNumber.value = domItem.editPageNumber.value.replace(
+        /^0+/,
+        ""
+      );
+
+      // Tüm nokta (.) karakterlerini kaldır
+      domItem.editPageNumber.value = domItem.editPageNumber.value.replace(
+        /\./g,
+        ""
+      );
+
+      // Tüm eksi (-) karakterlerini kaldır
+      domItem.editPageNumber.value = domItem.editPageNumber.value.replace(
+        /-/g,
+        ""
+      );
+    }
+    if (
       domItem.editBookName.value !== "" &&
       domItem.editAuthor.value !== "" &&
-      domItem.editPageNumber !== ""
+      domItem.editPageNumber.value !== ""
     ) {
       bookLibrary[activeIndex].author = `${domItem.editAuthor.value}`;
       bookLibrary[activeIndex].name = `${domItem.editBookName.value}`;
@@ -222,7 +244,16 @@ const domFunctions = {
     domFunctions.editBook(readIndex);
   },
   preventBadData(event) {
-    if (event.key === "." || event.key === "-") {
+    domItem.pageNumberInp.value = domItem.pageNumberInp.value.replace(
+      /[.-]/g,
+      ""
+    );
+    domItem.pageNumberInp.value = domItem.pageNumberInp.value.replace(
+      /^0+/,
+      ""
+    );
+
+    if (event.data === "." || event.data === "-") {
       if (domItem.pageNumberInp.value !== "") domFunctions.badDataAnimation();
       event.preventDefault();
       return;
@@ -258,10 +289,9 @@ const domFunctions = {
       domItem.pageNumberInp.focus();
       return;
     }
-    if (domItem.pageNumberInp.value.includes(".")) {
-    }
 
     let isRead = domItem.alreadyReadInp.checked === true ? true : false;
+
     pushNewBook(
       domItem.bookNameInp.value,
       domItem.authorInp.value,
@@ -290,10 +320,7 @@ domItem.newBookButton.addEventListener("click", domFunctions.newBookFunc);
 
 domItem.editBookButton.addEventListener("click", domFunctions.editBookListener);
 
-domItem.pageNumberInp.addEventListener("keypress", domFunctions.preventBadData);
-domItem.editPageNumber.addEventListener(
-  "keypress",
-  domFunctions.preventBadData
-);
+domItem.pageNumberInp.addEventListener("input", domFunctions.preventBadData);
+domItem.editPageNumber.addEventListener("input", domFunctions.preventBadEdit);
 
 domFunctions.renderDom();
