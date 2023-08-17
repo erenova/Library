@@ -204,13 +204,11 @@ const domFunctions = {
         ""
       );
 
-      // Tüm nokta (.) karakterlerini kaldır
       domItem.editPageNumber.value = domItem.editPageNumber.value.replace(
         /\./g,
         ""
       );
 
-      // Tüm eksi (-) karakterlerini kaldır
       domItem.editPageNumber.value = domItem.editPageNumber.value.replace(
         /-/g,
         ""

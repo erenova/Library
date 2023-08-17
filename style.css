@@ -103,7 +103,7 @@ button {
   grid-auto-rows: 300px;
 }
 .content-books::-webkit-scrollbar {
-  width: 5px; /* Webkit tarayıcılar için scrollbar genişliği (örneğin Chrome, Safari) */
+  width: 5px;
 }
 
 .content-books::-webkit-scrollbar-thumb {
@@ -111,7 +111,7 @@ button {
 }
 
 .content-books::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Mouse üzerindeyken scrollbar rengi */
+  background: #555;
 }
 
 .book {
@@ -125,15 +125,15 @@ button {
   transition: 300ms all ease;
 }
 .book::-webkit-scrollbar {
-  width: 2px; /* Webkit tarayıcılar için scrollbar genişliği (örneğin Chrome, Safari) */
+  width: 2px;
 }
 
 .book::-webkit-scrollbar-thumb {
-  background: rgba(0, 255, 170, 0.4); /* Scrollbar rengi */
+  background: rgba(0, 255, 170, 0.4);
 }
 
 .book::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Mouse üzerindeyken scrollbar rengi */
+  background: #555;
 }
 
 .book-author {
