@@ -4,7 +4,7 @@
   --background: rgba(215, 206, 199, 0.6);
   --svg-color: #d7cec7;
   --dark: #565656;
-  --reddish: rgba(118, 50, 63, 0.75);
+  --reddish: #7f1d1d;
   --tan: #d8d0c9;
 }
 @font-face {
@@ -123,6 +123,7 @@ button {
   overflow-y: auto;
   background-color: var(--reddish);
   transition: 300ms all ease;
+  color: white;
 }
 .book::-webkit-scrollbar {
   width: 2px;
@@ -158,6 +159,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: wheat;
 }
 
 .book-page-number {
