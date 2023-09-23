@@ -1,10 +1,12 @@
 let bookLibrary = fetchFromLocal("library") || [];
 
-function Book(author, name, totalPage, state = false) {
-  this.author = author;
-  this.name = name;
-  this.totalPage = totalPage;
-  this.state = state;
+class Book {
+  constructor(author, name, totalPage, state = false) {
+    this.author = author;
+    this.name = name;
+    this.totalPage = totalPage;
+    this.state = state;
+  }
 }
 
 function pushNewBook(valAuthor, valName, valPage, valState = false) {
@@ -30,11 +32,6 @@ function fetchFromLocal(item) {
     return JSON.parse(localStorage.getItem("library"));
   }
 }
-
-const userSettings = {
-  activeDelete: null,
-  activeEdit: null,
-};
 
 const domSelectors = {
   topbar: "#topbar",
